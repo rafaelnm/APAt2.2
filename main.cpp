@@ -38,7 +38,7 @@ int mochila(int W, int wt[], int val[], int n){
     }
     cout << endl;
   }
-  //Sequencia
+  
   int peso = W;
   int size = n;
   std::vector<int> v;
@@ -55,7 +55,7 @@ int mochila(int W, int wt[], int val[], int n){
   }
 
   cout << endl;
-  cout << "Peso maximo da mochila: " << W << endl;
+  cout << "Peso maximo da mochia: " << W << endl;
   cout << "Valor dos itens: ";
 
   for (size_t i = 0; i < v.size(); i++) {
@@ -75,10 +75,10 @@ int main(int argc, char const *argv[]) {
 
     int number = i+1;
 
-    //Abrir Arquivo da mochila
+    //Abrindo diretorio do arquivo das instancias
     ifstream file(PATH + "mochila0"+ to_string(number) + ".txt");
 
-    //salvando do txt para vetor
+    //Transferindo linhas do .txt pro vetor
     while(std::getline(file, line)){
       int n;
       istringstream iss(line);
@@ -93,7 +93,7 @@ int main(int argc, char const *argv[]) {
     int val[] = {};
     size_t vFile_half = (vFile.size()-2)/2;
 
-    //Preenchendo array com peso e valor
+    //Populando os vetores de peso[wt] e valor[val]
     for (size_t i = 0; i < vFile_half; i++) {
       wt[i] = vFile.at(i+2);
     }
@@ -102,7 +102,7 @@ int main(int argc, char const *argv[]) {
     }
 
     cout << endl;
-    cout << "Mamo valor da mochila: "<< mochila(W, wt, val, size) << endl;
+    cout << "Valor maximo da mochila: "<< mochila(W, wt, val, size) << endl;
 
     vFile.clear();
 
