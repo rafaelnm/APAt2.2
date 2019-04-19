@@ -102,7 +102,7 @@ int main(int argc, char const *argv[]) {
     }
 
     cout << endl;
-    cout << "Maximum bag value: "<< mochila(W, wt, val, size) << endl;
+    cout << "Mamo valor da mochila: "<< mochila(W, wt, val, size) << endl;
 
     vFile.clear();
 
