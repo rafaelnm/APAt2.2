@@ -10,7 +10,7 @@ const static string PATH = "instancias_mochila/";
 int max(int a, int b) {
   return (a > b)? a : b;
 }
-int knapSack(int W, int wt[], int val[], int n){
+int mochila(int W, int wt[], int val[], int n){
 
   int K[n+1][W+1];
 
@@ -31,32 +31,32 @@ int knapSack(int W, int wt[], int val[], int n){
       }
     }
   }
-  //Print table
+  //Tabela
   for(size_t i = 0; i <= n; i++) {
     for(size_t j = 0; j <= W; j++) {
         cout << "|" << K[i][j] <<"|";
     }
     cout << endl;
   }
-  //Number´print sequence
-  int wight = W;
+  //Sequencia
+  int peso = W;
   int size = n;
   std::vector<int> v;
 
   cout << endl;
-  cout << "Itemns wight: ";
+  cout << "Peso dos itens: ";
 
   for (size_t i = size; i > 0; i--) {
-    if(K[i][wight] != K[i-1][wight]){
+    if(K[i][peso] != K[i-1][peso]){
       v.push_back(val[i-1]);
-      wight = wight - wt[i-1] ;
+      peso = peso - wt[i-1] ;
       cout << wt[i-1] << " ";
     }
   }
 
   cout << endl;
-  cout << "Maximun bag wight: " << W << endl;
-  cout << "Items value: ";
+  cout << "Peso maximo da mochila: " << W << endl;
+  cout << "Valor dos itens: ";
 
   for (size_t i = 0; i < v.size(); i++) {
     cout << v.at(i) << " ";
@@ -75,10 +75,10 @@ int main(int argc, char const *argv[]) {
 
     int number = i+1;
 
-    //Open file from directory
+    //Abrir Arquivo da mochila
     ifstream file(PATH + "mochila0"+ to_string(number) + ".txt");
 
-    //Pushing all lines from .text to Vector
+    //salvando do txt para vetor
     while(std::getline(file, line)){
       int n;
       istringstream iss(line);
@@ -93,7 +93,7 @@ int main(int argc, char const *argv[]) {
     int val[] = {};
     size_t vFile_half = (vFile.size()-2)/2;
 
-    //Populate array wt and val
+    //Preenchendo array com peso e valor
     for (size_t i = 0; i < vFile_half; i++) {
       wt[i] = vFile.at(i+2);
     }
@@ -102,7 +102,7 @@ int main(int argc, char const *argv[]) {
     }
 
     cout << endl;
-    cout << "Maximum bag value: "<< knapSack(W, wt, val, size) << endl;
+    cout << "Maximum bag value: "<< mochila(W, wt, val, size) << endl;
 
     vFile.clear();
 
